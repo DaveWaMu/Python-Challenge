@@ -4,14 +4,11 @@ import csv
 #Import path
 dir_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(dir_path)
-#print(dir_path)
-pybank_path = os.path.join(dir_path, 'Resources')
-os.chdir(pybank_path)
-#print(pybank_path)
+pypoll_path = os.path.join(dir_path, 'Resources')
+os.chdir(pypoll_path)
 
 #Export path
-output_path=os.path.dirname("output_file_pypoll.txt")
-#print(output_path)
+output_path = os.path.join(dir_path, 'analysis')
 
 #Variables
 vote_total=0
@@ -38,11 +35,9 @@ with open('election_data.csv','r') as csv_file:
         county_list.append(county)
         candidate=row[2]
         choice_list.append(candidate)
-    #candidate_list=[(c) for c in choice_list if c not in candidate_list]
     for c in choice_list:
         if c not in candidate_list:
             candidate_list.append(c)
-    #print(candidate_list)
             
 #Vote totals
     for v in choice_list:
@@ -79,6 +74,7 @@ print('Winner: Khan')
 print('-------------------------')
 
 #Write file
+os.chdir(output_path)
 with open("output_file_pypoll.txt","w") as datafile:
     csvwriter = csv.writer(datafile, lineterminator='\n')
 

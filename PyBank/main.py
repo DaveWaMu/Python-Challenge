@@ -4,14 +4,11 @@ import csv
 #Import path
 dir_path = os.path.dirname(os.path.abspath(__file__))
 os.chdir(dir_path)
-#print(dir_path)
 pybank_path = os.path.join(dir_path, 'Resources')
 os.chdir(pybank_path)
-#print(pybank_path)
 
 #Export path
-output_path=os.path.dirname("output_file_pybank.txt")
-#print(output_path)
+output_path = os.path.join(dir_path, 'analysis')
 
 #Variables
 count=0
@@ -62,6 +59,7 @@ print(f"Greatest Increase in Profits/Loss: {increase_date} (${increase})")
 print(f"Greatest Decrease in Profits/Loss: {decrease_date} (${decrease})")
 
 #Write file
+os.chdir(output_path)
 with open("output_file_pybank.txt","w") as datafile:
     csvwriter = csv.writer(datafile, lineterminator='\n')
     
